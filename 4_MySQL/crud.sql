@@ -1,5 +1,5 @@
 -- CREATE : ajouter des données dans la base
--- INSERT INTO(...) VALUES(...)
+-- INSERT INTO (...) VALUES (...)
 
 -- Créer un auteur
 INSERT INTO authors(lastname, firstname, email) VALUES ('Martin', 'Pierre', 'pierre@martin.fr');
@@ -14,7 +14,7 @@ INSERT INTO posts(title, content, authors_id) VALUES ('Ceci est un exemple', 'Ce
 INSERT INTO posts_categories(posts_id, categories_id) VALUES (1, 1);
 
 -- READ : récupérer des données
--- SELECT... FROM...
+-- SELECT ... FROM ...
 -- Lister tous les auteurs
 SELECT * FROM authors;
 

@@ -13,7 +13,7 @@ echo "<p>Age : {$personne['age']}</p>";
 echo "<p>Ville : {$personne['ville']}</p>";
 
 // En "automatique"
-foreach($personne as $cle => $valeur){
+foreach ($personne as $cle => $valeur) {
     echo "<p>$cle : $valeur</p>";
 }
 
@@ -54,6 +54,6 @@ echo '<hr>';
 $nombreAleatoire = rand(1, 100);
 echo $nombreAleatoire;
 
-if($nombreAleatoire > 90){
+if ($nombreAleatoire > 90) {
     echo '<h1>Jackpot !!!</h1>';
 }
