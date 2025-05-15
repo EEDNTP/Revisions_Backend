@@ -1,0 +1,35 @@
+@startuml
+title: Etape Create du CRUD
+|Utilisateur|
+start
+:Charge le formulaire;
+:Envoie le formulaire;
+
+|Serveur|
+if (Méthode correcte (POST ou GET) ?) then (oui)
+    :Récupère les données du formulaire;
+    :Échappe les données (XSS);
+    :Vérifie les champs vides;
+    :Vérifie le format des données;
+    if (Données valides?) then (oui)
+        :Prépare une requête SQL;
+        note right
+          INSERT INTO table (champ1, champ2,...) VALUES ("valeur1", "valeur2", ...);
+        end note
+        :Lie les paramètres;
+        :Exécute la requête;
+        if (Requête réussie?) then (oui)
+            :Confirme la création;
+        else (non)
+            :Affiche un message d'erreur;
+        endif
+    else (non)
+        :Affiche un message d'erreur;
+    endif
+
+else (non)
+    :Affiche un message d'erreur;
+endif
+
+stop
+@enduml

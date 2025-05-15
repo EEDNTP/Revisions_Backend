@@ -1,0 +1,60 @@
+@startuml
+title: Etape Update du CRUD
+
+|Utilisateur|
+start
+:Charge la page;
+
+|Serveur|
+if (Méthode == GET?) then (oui)
+    :Récupère l'ID de l'enregistrement;
+    :Vérifie l'ID;
+    :Prépare une requête SQL de sélection;
+    note right
+      SELECT * FROM table WHERE id = :id;
+    end note
+    :Lie les paramètres;
+    :Exécute la requête de sélection;
+    if (Données existent?) then (oui)
+        :Affiche le formulaire pré-rempli;
+
+
+
+
+        |Utilisateur|
+        :Modifie les données dans le formulaire;
+        :Soumet le formulaire;
+
+        |Serveur|
+        if (Méthode == POST?) then (oui)
+            :Récupère les données du formulaire;
+            :Vérifie les champs vides;
+            :Vérifie le format des données;
+            :Échappe les données (XSS);
+            :Prépare une requête SQL de mise à jour;
+            note right
+              UPDATE table SET champ1 = "valeur1", champ2 = "valeur2"... WHERE id = :id;
+            end note
+            :Lie les paramètres;
+            :Exécute la requête de mise à jour;
+            if (Requête réussie?) then (oui)
+                :Confirme la mise à jour;
+            else (non)
+                :Affiche un message d'erreur;
+            endif
+        else (non)
+            :Affiche un message d'erreur;
+        endif
+    else (non)
+        :Affiche un message d'erreur;
+    endif
+
+else (non)
+    :Affiche un message d'erreur;
+endif
+stop
+@enduml
+
+
+stop
+@enduml

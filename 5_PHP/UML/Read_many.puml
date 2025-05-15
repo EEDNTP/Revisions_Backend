@@ -1,0 +1,22 @@
+@startuml
+title: Etape Read (plusieurs enregistrements) du CRUD
+
+|Utilisateur|
+start
+:Initie la lecture de toutes les données;
+
+|Serveur|
+
+:Crée une requête SQL (non préparée, pas de partie variable);
+note right
+  SELECT * FROM table;
+end note
+:Exécute la requête;
+if (Données existent?) then (oui)
+    :Affiche les données;
+else (non)
+    :Affiche un message d'erreur;
+endif
+
+stop
+@enduml

@@ -1,0 +1,29 @@
+@startuml
+title: Etape Delete du CRUD
+
+|Utilisateur|
+start
+:Initie la suppression;
+
+|Serveur|
+if (Méthode == POST?) then (oui)
+    :Récupère l'ID de l'enregistrement;
+    :Vérifie l'ID;
+    :Vérifie les dépendances;
+    if (Dépendances existent?) then (non)
+        :Prépare une requête SQL;
+        note right
+          DELETE FROM table WHERE id = :id;
+        end note
+        :Lie les paramètres;
+        :Exécute la requête;
+        :Confirme la suppression;
+    else (oui)
+        :Affiche un message d'erreur;
+    endif
+else (non)
+    :Affiche un message d'erreur;
+endif
+
+stop
+@enduml

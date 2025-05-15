@@ -1,0 +1,24 @@
+@startuml
+title: Etape Read (1 seul enregistrement) du CRUD
+
+|Utilisateur|
+start
+:Charge la page;
+
+|Serveur|
+:Récupère l'ID de l'enregistrement;
+:Vérifie l'ID;
+:Prépare une requête SQL;
+note right
+  SELECT * FROM table WHERE id = :id;
+end note
+:Lie les paramètres;
+:Exécute la requête;
+if (Données existent?) then (oui)
+    :Affiche les données;
+else (non)
+    :Affiche un message d'erreur;
+endif
+
+stop
+@enduml
