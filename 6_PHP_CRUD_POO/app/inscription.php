@@ -10,7 +10,7 @@
         <h1>M'inscrire</h1>
     </header>
     <main>
-        <form action="traitement-inscription.php" method="post" novalidate>
+        <form action="traitement-inscription.php" method="post" enctype="multipart/form-data" novalidate>
             <div>
                 <label for="username">Nom d'utilisateur</label>
                 <input type="text" name="username" id="username">
@@ -22,6 +22,10 @@
             <div>
                 <label for="password">Mot de passe</label>
                 <input type="password" name="password" id="password">
+            </div>
+            <div>
+                <label for="avatar">Votre photo</label>
+                <input type="file" name="avatar" id="avatar">
             </div>
             <div>
                 <input type="checkbox" name="gpdr" id="gpdr">
